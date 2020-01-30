@@ -4,6 +4,25 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const likes = document.querySelectorAll(".like span");
+for(like of likes){
+  like.addEventListener("click" , (e)=> {
+    e.stopPropagation();
+    mimicServerCall()
+    .then(data => {
+      e.target.classList.toggle("activated-heart");
+      e.target.innerHTML=FULL_HEART;
+    })
+    .catch(err => {
+      document.querySelector("div#modal").className="";
+      setTimeout(() => {
+      document.querySelector("div#modal").className="hidden";
+        
+      }, 5000);
+    });
+  
+  })
+}
 
 
 
