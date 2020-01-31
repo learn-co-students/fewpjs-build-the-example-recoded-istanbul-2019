@@ -19,7 +19,29 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
         reject("Random server error. Try again.");
       } else {
         resolve("Pretend remote server notified of action!");
+        let wri=document.querySelectorAll('.like-glyph');
+        for(let i=0;i<wri.length;i++)
+        {
+          wri[i].className+=" activated-heart"; 
+        }
       }
     }, 300);
   });
 }
+mimicServerCall()
+  .then(function(serverMessage){
+      alert(serverMessage);
+    })
+.catch(function() {
+let err=document.getElementById('modal');
+err.className="";
+setTimeout(function(){ err.className="hidden"; }, 5000);
+  
+}   );
+
+ let wri=document.querySelectorAll('.like-glyph');
+        for(let i=0;i<wri.length;i++)
+        {
+          wri[i].addEventListener('click',function(){
+          wri[i].className+="like-glyph"; });
+        }
