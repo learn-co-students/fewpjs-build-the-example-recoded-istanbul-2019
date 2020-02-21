@@ -4,6 +4,14 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const modal = document.getElementById('modal');
+modal.className = "hidden";
+
+
+let likeHeart = document.querySelector(".like-glyph");
+likeHeart.addEventListener("click", function name(params) {
+  likeHeart.classList.toggle('activated-heart')
+})
 
 
 
