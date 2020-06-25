@@ -4,6 +4,50 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const errorModal = document.getElementById("modal")
+errorModal.className = "hidden"
+const hBtn = document.querySelectorAll("span.like-glyph")
+
+let glyph = {
+  emptyHeart : emptyHeart,
+  fullHeart: fullHeart
+};
+
+let clr = {
+  "" : "red",
+  "red" : ""
+};
+
+document.addEventListener("DOMContentLoaded", event => {
+  errorModal.hidden = true
+  btnClick()
+})
+
+function btnClick() {
+  hBtn.forEach(span => {
+    span.addEventListener("click", callback)
+  })
+}
+
+function callback(e) {
+  let heart = e.target
+  mimicServerCall()
+  .then(message => {
+    heart.innerText = glyph[heart.innerText]
+    heart.style.color = clr[heart.style.color]
+  })
+
+  .catch(message => {
+    errorModal.hidden = false
+    setTimeout(function() {
+      errorModal.hidden = true}, 5000)
+    
+  })
+}
+
+
+
+
 
 
 
